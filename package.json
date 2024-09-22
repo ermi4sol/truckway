@@ -1,0 +1,16 @@
+{
+    "name": "truckway",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "concurrently \"npm run server\" \"npm run client\"",
+        "server": "cd backend && npm run dev",
+        "client": "cd frontend && npm start"
+    },
+    "devDependencies": {
+        "concurrently": "^6.2.0"
+    },
+    "dependencies": {
+        "react-scripts": "^5.0.1",
+        "webpack": "^5.94.0"
+    }
+}
