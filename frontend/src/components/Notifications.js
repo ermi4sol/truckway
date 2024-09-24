@@ -1,4 +1,4 @@
-// src/components/Notifications.js
+
 import React, { useEffect, useState } from 'react';
 import AuthService from '../services/auth';
 import NotificationService from '../services/notifications';

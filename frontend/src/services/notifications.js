@@ -1,4 +1,4 @@
-// src/services/notifications.js
+
 import ApiService from './api';
 
 const NotificationService = {

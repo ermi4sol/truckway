@@ -1,4 +1,4 @@
-// src/components/JobApplicationList.js
+
 import React, { useEffect, useState } from 'react';
 import ApiService from '../services/api';
 import AuthService from '../services/auth';
