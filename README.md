@@ -74,4 +74,4 @@ TruckWay is a platform that connects truck drivers with companies or individuals
 
 Navigate to the `client` folder:
 ```bash
-cd client
+cd frontend
