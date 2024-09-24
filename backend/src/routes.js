@@ -13,7 +13,7 @@ const {
   getJobApplicationById,
   updateJobApplicationStatus
 } = require('./jobApplications');
-const authMiddleware = require('./middleware/auth');
+// const authMiddleware = require('./middleware/auth');
 
 const router = express.Router();
 
@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
 });
 
 // Transport request routes
-router.post('/transport-requests', authMiddleware, async (req, res) => {
+router.post('/transport-requests', /** authMiddleware **/ async (req, res) => {
   try {
     if (req.user.role !== 'company') {
       return res.status(403).json({ message: 'Only companies can create transport requests' });
@@ -52,7 +52,7 @@ router.post('/transport-requests', authMiddleware, async (req, res) => {
   }
 });
 
-router.get('/transport-requests', authMiddleware, async (req, res) => {
+router.get('/transport-requests', /** authMiddleware,**/ async (req, res) => {
   try {
     const filters = req.user.role === 'company' ? { companyId: req.user.id } : {};
     const requests = await getTransportRequests(filters);
@@ -62,7 +62,7 @@ router.get('/transport-requests', authMiddleware, async (req, res) => {
   }
 });
 
-router.get('/transport-requests/:id', authMiddleware, async (req, res) => {
+router.get('/transport-requests/:id', /** authMiddleware,**/ async (req, res) => {
   try {
     const request = await getTransportRequestById(req.params.id);
     if (!request) {
@@ -77,7 +77,7 @@ router.get('/transport-requests/:id', authMiddleware, async (req, res) => {
   }
 });
 
-router.put('/transport-requests/:id', authMiddleware, async (req, res) => {
+router.put('/transport-requests/:id', /** authMiddleware,**/ async (req, res) => {
   try {
     if (req.user.role !== 'company') {
       return res.status(403).json({ message: 'Only companies can update transport requests' });
@@ -92,7 +92,7 @@ router.put('/transport-requests/:id', authMiddleware, async (req, res) => {
   }
 });
 
-router.delete('/transport-requests/:id', authMiddleware, async (req, res) => {
+router.delete('/transport-requests/:id', /** authMiddleware,**/ async (req, res) => {
   try {
     if (req.user.role !== 'company') {
       return res.status(403).json({ message: 'Only companies can delete transport requests' });
@@ -108,7 +108,7 @@ router.delete('/transport-requests/:id', authMiddleware, async (req, res) => {
 });
 
 // Job application routes
-router.post('/job-applications', authMiddleware, async (req, res) => {
+router.post('/job-applications', /** authMiddleware,**/ async (req, res) => {
     try {
       if (req.user.role !== 'driver') {
         return res.status(403).json({ message: 'Only drivers can apply for jobs' });
@@ -121,7 +121,7 @@ router.post('/job-applications', authMiddleware, async (req, res) => {
     }
   });
   
-  router.get('/job-applications', authMiddleware, async (req, res) => {
+  router.get('/job-applications', /** authMiddleware,**/ async (req, res) => {
     try {
       const filters = req.user.role === 'driver' ? { driverId: req.user.id } : { companyId: req.user.id };
       const applications = await getJobApplications(filters);
@@ -131,7 +131,7 @@ router.post('/job-applications', authMiddleware, async (req, res) => {
     }
   });
   
-  router.get('/job-applications/:id', authMiddleware, async (req, res) => {
+  router.get('/job-applications/:id', /** authMiddleware,**/ async (req, res) => {
     try {
       const application = await getJobApplicationById(req.params.id);
       if (!application) {
@@ -149,7 +149,7 @@ router.post('/job-applications', authMiddleware, async (req, res) => {
     }
   });
   
-  router.put('/job-applications/:id/status', authMiddleware, async (req, res) => {
+  router.put('/job-applications/:id/status', /** authMiddleware,**/ async (req, res) => {
     try {
       if (req.user.role !== 'company') {
         return res.status(403).json({ message: 'Only companies can update job application status' });

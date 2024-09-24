@@ -15,7 +15,7 @@ const Register = () => {
     e.preventDefault();
     setError('');
     try {
-      await AuthService.register(name, email, password, role);
+      await AuthService.register({name, email, password, role});
       navigate('/login');
     } catch (error) {
       setError(error.message || 'An error occurred during registration');
