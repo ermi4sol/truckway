@@ -35,7 +35,7 @@ const { initializeDatabase } = require('./db');
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || truckway.netlify.app;
 
 // Middleware
 app.use(cors());

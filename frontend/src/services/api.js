@@ -93,7 +93,7 @@ export default ApiService; **/
 
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api'; // Update this with your actual API URL
+const API_URL = 'http://truckway.netlify.app/api'; // Update this with your actual API URL
 
 const getAuthHeader = () => {
   const user = JSON.parse(localStorage.getItem('user'));
